@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <style>
+    input[type="text"]{
+        display:block;
+        width:300px;
+        padding: 10px 20px;
+        margin:15px auto;
+        text-align:center;
+        border-radius: 8px;
+    }
+
+    body{
+        background-color: pink;
+    }
+    .main{
+        position : relative;
+        top: 35vh;
+    }
+    .main_title{
+        color:black;
+        font-family: "Do Hyeon";
+        font-size : 24px;
+        font-weight:400;
+        text-align:center;
+    }
+    
+    </style>
+</head>
+
+<body>
+    <script>
+        var name = "호빵이";
+
+        function ok(){
+            var tmp = document.getElementById("input");
+            if (name == tmp.value ){
+                alert("어서오세요!");
+            }
+            else {
+                tmp.value=null;
+                tmp.setAttribute('placeholder','나는 식빵이야!');
+            }
+        }
+    </script>
+    <div class="main">
+        <div class="main_title">편지를 받은 사람은 누구인가요?</div>
+        <input type="text" style="font-family:Do Hyeon;" id="input" onchange='ok()'>
+    </div>
+    
+
+</body>
+</html>
