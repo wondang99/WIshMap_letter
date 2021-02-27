@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <style>
         
@@ -55,6 +56,7 @@
         sticker을 조정하고 싶다면 sticker의 position을 건들던가 아니면
         sticker의 부모요소인 letter-head를 이용해 요소를 중앙에 배치*/
         position: absolute;
+        z-index: 1;
         top:-40px;
         width: 100px;
         height: 90px;
@@ -121,7 +123,7 @@
             사랑해
         </div>
     </div>
-    <div class="line">
+    <div class="line" style="font-family:Do Hyeon;">
         편지가 도착했습니다!<br>
         편지를 읽어보시겠습니까?<br>
         <div class="yes">
@@ -146,11 +148,11 @@
                     for (var j = 0; j < h.length; j++) {
                     h[j].style.transform="rotateX(180deg)";
                     h[j].style.transition = "1000ms"
-                }},400);
+                }},200);
                 
                 setTimeout(function(){
-                    location.href="file:///tmp/guest-5enjpg/다운로드/letter project.html";
-                },1800);
+                    location.href="https://wondang99.github.io/WIshMap_letter/letter_to.html";
+                },1500);
                 
             }
     </script>
