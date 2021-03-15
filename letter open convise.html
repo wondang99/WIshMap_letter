@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        
+    body{
+        background-color: pink;
+    }
+    .letter{
+        position:relative ;
+        border : 1px solid black;
+        background-color: white ;
+        margin:auto;
+        margin-top : 30vh;
+        width : 300px;
+        height : 180px;
+        box-sizing : border-box;
+        /* 너비와 높이를 %로 해주니까 안되네. 왜지? 
+        block은 not inline이기 때문에 정의되지 않아서!*/
+    }
+    .letter-in{
+        border-left: 91px solid transparent;
+        border-right: 91px solid transparent;
+        border-top: 70px solid rgb(227, 236, 232);
+
+    }
+    .letter-head{
+        position:relative;
+        top:-70px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border-left: 150px solid transparent;
+        border-right: 150px solid transparent;
+        border-top: 110px solid rgb(5, 128, 80);
+        transition : all 200ms;
+        transform-origin: top center ;
+    }
+    .hidden{
+        font-family: 'Nanum Pen Script',serif;
+        position: absolute;
+        font-size:35px;
+        top : 88px;
+        left : 112px;
+        color:red;
+        cursor: pointer;
+    }
+    #sticker {
+        /* block의 "요소"들을 margin 등등을 통해 정렬. 지금 보는 하트는 그 자체가 block
+        sticker을 조정하고 싶다면 sticker의 position을 건들던가 아니면
+        sticker의 부모요소인 letter-head를 이용해 요소를 중앙에 배치*/
+        position: absolute;
+        z-index: 1;
+        top:-40px;
+        width: 100px;
+        height: 90px;
+        transition : all 200ms;
+    }   
+    #sticker::before,
+    #sticker::after {
+      position: absolute;
+      content: "";
+      left: 50px;
+      top: 0;
+      width: 50px;
+      height: 80px;
+      background: red;
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+    #sticker::after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+    #sticker:hover {
+        transform : scale(1.2);
+        cursor: pointer;
+    /* sticke에 묶여있으니까 한번에 처리 가능 */
+    }
+    #sticker:active{
+        display:none;
+    }
+    
+    .line{
+        margin-top:1vh;
+        text-align: center;
+    }
+    .yes{
+        display:flex;
+        flex-direction: row;
+        justify-content: center ;
+        padding:10px
+    }
+    .yes input{
+        border-radius: 5px;
+        background-color: white;
+        width : 50px;
+        height : 30px;
+        margin : 0 5px;
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="letter" >
+        <div class="letter-in">
+        </div>
+        <div class="letter-head">
+                <div id="sticker" >
+                    </div>
+        </div>
+        
+        <div class="hidden">
+            사랑해
+        </div>
+    </div>
+    <div class="line" style="font-family:Do Hyeon;">
+        편지가 도착했습니다!<br>
+        편지를 읽어보시겠습니까?<br>
+        <div class="yes">
+                <input type = "button" value = "Yes" onclick="next();">
+                <input type = "button" value = "Yes" onclick="next();">
+            </div>
+            
+        </input>
+        </div>
+        <script>
+            var heart = document.getElementById("sticker");
+            var str = document.getElementsByClassName("hidden");
+            var h = document.getElementsByClassName("letter-head");
+            function next(){
+                heart.style.display = "none";
+                for (var i = 0; i < str.length; i++) {
+                str[i].style.display="none";
+                /* id는 바로 적용 가능, class는 id랑 호출하는 것도 관리하는 것도 다름.
+                html에서 class라고 적용해서 몰랐는데 java에서 사용하는 class와 동일 */
+                }
+                setTimeout(function(){
+                    for (var j = 0; j < h.length; j++) {
+                    h[j].style.transform="rotateX(180deg)";
+                    h[j].style.transition = "1000ms"
+                }},200);
+                
+                setTimeout(function(){
+                    location.href="letter_to.html";
+                },1500);
+                
+            }
+    </script>
+</body>
+</html>
