@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap');
+
+body{
+    margin:0 0;
+    width:100vw;
+    height: 100vh;
+    background-color: #fff;
+    background: linear-gradient(to bottom, pink, #ffffff);
+    overflow: hidden;
+}
+.homemenu{
+    position:fixed;
+    width:50px;
+    height: 50px;
+    top:20px;
+    left: 20px;
+    z-index: 10;
+    transition: all 2000ms;
+}
+.homemenu img{
+    width:100%;
+    height: 100%;
+}
+.homemenu label{
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
+
+.category{
+    display: flex;
+    width: 100%;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all 150ms;
+}
+input[type='radio']{
+    display:none;
+}
+.category .middle{
+    display:flex;
+    width:100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.category section{
+    margin:5vh;
+    display:inline-block;
+    position:relative;
+    border-radius: 50%;
+    width: 8vw;
+    padding-bottom:8vw;
+    transition: all 150ms;
+    /* 예상한 효과가 아닌데 transition을 넣으니까
+    새로고침해서 시작할때 section들에 애니메이션이 들어간다. */
+}
+
+.category section label{
+    display:block;
+    position:absolute;
+    width: 100%;
+    height: 100%; 
+}
+
+.category section .content{ /* desert 와 play */
+    position: absolute;
+    top: 25%;
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    /* 1fr은 나머지 공간을 쓴다. */
+    height: 100%;
+}
+.category section .content .menu{
+    display: inline-block;
+    border-right: solid 1px black; 
+    padding : 20px;
+    padding-top:10px;
+    height:56%;
+    color:white;
+    font-family: "Gamja Flower"
+}
+
+.category .food .all h4{
+    position: absolute;
+    top:19%;
+    left: 20px;
+    font-family: "Gamja Flower"
+}
+
+.category .food .all .content { 
+    position: absolute;
+    top: 25%;
+    display:grid;
+    grid-template-columns: 50% 1fr;
+    height: 60%;
+    width: 100%;
+    border-top:solid black 1px;
+    border-radius: 3px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* .content .list의 크기에 따라 content의 크기가 조절될줄 알았는데 남는 공간이 발생 */
+.category .food .content .list{ 
+    display:flex;
+    height:150px;
+    padding-left:30px;
+    flex-direction: row;
+    align-items: center;
+    font-family: "Gamja Flower";
+    list-style: none;
+/* 자손인 li에 적용인 안됨 ,fontsize는 적용 되는데...?*/
+    font-size: 3vh;
+}
+
+.category .food .content .list img{ 
+    width:150px;
+    height: 150px;
+    border-radius: 2%;
+}
+
+
+.category section .content .main{
+    width:70%;
+    margin: 0 auto;
+    font-family: "Gamja Flower"
+}
+.category section .content .main footer{
+    display: inline-block;
+    padding:10px;
+    background-color: white;
+    border-radius: 2%;
+    font-family: "Gamja Flower"
+}
+/* 이거 */
+.category section .content .menu .bakery{
+    display:none;
+}
+
+
+.category section .item{
+    position: relative;
+    display:grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    width :60%;
+    margin: auto;
+    margin-top: 13%;
+    font-family: "Gamja Flower";
+}
+.category section .item li{
+    list-style: none;
+    position: relative;
+    margin:10px;
+    font-size:1vw;
+    text-align: center;
+}
+
+.category section .item li img{
+    display: block;
+    max-width:70%;
+    margin: 15px auto;
+}
+.category .play .content .menu{
+    color:black;
+}
+
+/* 왜 적용이 안될까 grid라 그런가 아니네 position: relative때문 */
+.category .wish .item li:hover{
+    top:-8px;
+}
+
+.category .wish .new{
+    font-family: "Gamja Flower";
+    font-size:1.2vw;
+    width:300px;
+    margin: 0 auto;
+    text-align: center;
+    /* outer에 이걸 두면 내부 inline요소 중앙 정렬 */
+}
+/* 가운데 정렬 정립하고 가자... */
+
+
+.category .food{
+    background-color: chartreuse;
+}
+.category .play {
+    background-color: rgb(251, 255, 0);
+}
+.category .wish {
+    background-color: rgb(16, 117, 84);
+}
+.category .desert{
+    background-color: rgb(88, 44, 7);
+}
+.category section h1{
+    position : absolute;
+    top : 10%;
+    width: 100%;
+    text-align: center;
+    margin : 0;
+    font-size:6vw;
+    font-family: "Gamja Flower"
+}
+
+input[type='radio']:checked+section { 
+    position:fixed;
+    /* 확대됐을때==checked( 가상 셀렉터 +section ) 위치를 고정 , 모두 공통*/
+    width: 100%;
+    height: 100vh; 
+    border-radius: 0%;
+    z-index: 9;
+    top: 0;
+    left:0;
+    margin: 0 0;
+}
+
+#home:checked+.category section h1{
+    position : absolute;
+    top : 32%;
+    width: 100%;
+    text-align: center;
+    margin : 0;
+    font-size:2vw;
+}
+
+#home:checked+.category{
+    transform : scale(1);
+    transform-style: preserve-3d;
+    transition: all 150ms;
+}
+
+/* content도 all로 통합 */
+#home:checked+.category section .all{
+    display:none;
+}
+
+#home:checked+.category section{
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+    transform-style: preserve-3d;
+}
+
+#home:checked+.category section:hover{
+    top:-8px;
+    transition: all 150ms;
+    /* 어디다가 transition을 줘야 속도가 부여될까... */
+    /* image를 추가하니까 hover가 없어졌다 */
+    /* 아 #home:checked+ 이 자리를 뺏겨서 그렇구나 */
+}
+
+#home:checked+.category+.homemenu{
+    display:none;
+}
+
+/* 이거 */
+.category section .content .menu li:hover+.bakery{
+    display: block;
+    background-color: white;
+    color:black;
+    border-radius: 3px;
+    position:static;
+    left:50px;
+    margin:3px;
+    padding:2px;
+    padding-left:7px;
+}
